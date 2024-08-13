@@ -63,10 +63,10 @@ HTTPS is essential for ensuring secure, trustworthy, and reliable communication 
 
 ---
 ### Tasks
-- Watch https://youtu.be/eun8LJQ7YZs?feature=shared
+- Watch ["Adopting and Implementing a successful PKI infrastructure in your Network." Ahmed Nabil CSCamp15 ](https://youtu.be/eun8LJQ7YZs?feature=shared).
 - What is OCSP? Why we need it?
 - What is root, Intermediate Certificate?
-- CISSP All in one exam guide (7) | 120 page, 10 pages daily for two weaks.
+- CISSP All in one exam guide (7) | 120 page, 10 pages daily for 2 weeks.
 
 #### More
 - Read https://www.techtarget.com/searchsecurity/definition/Certificate-Revocation-List.
