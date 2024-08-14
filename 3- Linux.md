@@ -108,6 +108,8 @@ To search for `flag.txt` file and starting search from the root `/`:
 ```bash
 find / -name flag.txt
 ```
+Some of `find` examples.  
+![OSINT Framework](images/find-examples.png)
 ##### { Download }
 You can download files via:
 - `wget`
