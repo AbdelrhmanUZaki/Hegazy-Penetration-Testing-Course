@@ -29,7 +29,7 @@ The Domain Name System (DNS) is a hierarchical and decentralized naming system u
     - **Caching:** 
 	      The resolved IP address is cached by the local DNS resolver for future queries to improve efficiency and reduce latency.
 
-3. **DNS Record Types:**
+3. **DNS Record Types:**  
 	Tools: `dig`, `nslookup` and https://mxtoolbox.com
     - **A Record (Address Record):**
 	      Maps a domain name to an IPv4 address.
