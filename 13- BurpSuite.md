@@ -38,13 +38,13 @@ By using FoxyProxy, you can efficiently manage and switch between proxy configur
 
 BurpSuite organizes its tools and features into different tabs, each designed to help with specific aspects of web security testing. Here's a breakdown of the main tabs and their uses:
 
-1. Dashboard
+1. **Dashboard**  
    The Dashboard provides an overview of your project’s activity, including issues found during scans, task progress, and key metrics. It’s a great place to monitor ongoing scans and get updates on critical findings.
 
-2. Target
+2. **Target**  
 	The Target tab is central to managing your engagement and defining which areas of the application you will be testing. It includes two key sub-tabs:
 	
-	**2.1 Scope**
+	**2.1 Scope**  
 	The Scope tab allows you to specify the areas of the application that you want BurpSuite to focus on during testing. This is critical for staying within the boundaries of your engagement and avoiding testing parts of the application or systems that are out of scope.
 	
 	- Include/Exclude Specific URLs: You can manually include or exclude specific URLs, paths, or file extensions using simple string matching or regular expressions. This ensures that BurpSuite tools like the Scanner, Spider, or Intruder only interact with relevant content.
@@ -53,7 +53,7 @@ BurpSuite organizes its tools and features into different tabs, each designed to
 	
 	Best Practice: Before starting any scans or attacks, always define your scope in detail. This ensures that all activities remain within the authorized boundaries of your testing engagement.
 	
-	**2.2 Site Map**
+	**2.2 Site Map**  
 	The Site Map tab provides a hierarchical and visual representation of all the endpoints, paths, and resources discovered within the target application.
 	
 	- Tree View: The Site Map displays the entire structure of the application in a tree format, allowing you to navigate through domains, paths, and individual resources.
@@ -62,7 +62,7 @@ BurpSuite organizes its tools and features into different tabs, each designed to
 	
 	Use Case: The Site Map is especially useful when navigating large or complex applications, as it visually maps out all discovered endpoints, making it easier to prioritize targets for further testing.
 	
-	**2.3 Issue Definitions**
+	**2.3 Issue Definitions**  
 	The Issue Definitions tab provides a comprehensive list of potential vulnerabilities and issues that BurpSuite can detect during scans. Each issue type is categorized based on its severity and type index. This section allows you to review the definitions and descriptions of various security issues that might arise during a web application test.
 	
 	- **List of Issue Types**: The table presents a list of known vulnerabilities like SQL Injection, OS Command Injection, and more. The typical severity of each issue is indicated, ranging from High to Medium or Low, helping prioritize issues based on their potential impact.
@@ -71,19 +71,19 @@ BurpSuite organizes its tools and features into different tabs, each designed to
 	
 	- **References and Vulnerability Classifications**: The selected issue definition also provides references to external resources and vulnerability classifications like CWE (Common Weakness Enumeration) and CAPEC (Common Attack Pattern Enumeration and Classification). These links guide further research or in-depth understanding of the specific vulnerability.
 
-3. Proxy
+3. Proxy  
 	The Proxy tab is a central component of BurpSuite, allowing you to intercept, inspect, and modify HTTP/S traffic between your browser and the target application. It is primarily used for manual testing, where you can observe and manipulate requests and responses in real-time.
 	
-	3.1 **Intercept**
+	3.1 **Intercept**  
 	You can control whether requests are intercepted or passed through unaltered. When intercepting requests, you have the option to forward, drop, or modify them before sending them to the server. This allows you to test specific inputs, handle unwanted traffic, or explore different scenarios by altering the request content.
 		
-	3.2 **HTTP History**
+	3.2 **HTTP History**  
 	The Proxy tab logs all HTTP requests and responses that pass through it, providing a detailed history of the interactions. Each entry includes information such as request method, URL, response status, and more. This history is useful for reviewing past traffic and identifying areas for further testing. You can apply filters to view only in-scope items, specific file types, or other criteria to focus on the most relevant data.
 	
-	3.3 **WebSockets**
+	3.3 **WebSockets**  
 	In addition to HTTP traffic, the Proxy tab also supports intercepting and modifying WebSocket messages, making it suitable for testing modern applications that use this communication protocol.
 	
-	3.4  **Proxy Settings**
+	3.4  **Proxy Settings**  
 	The Proxy Settings section allows you to configure key parameters for your proxy, including:
     - **Port Configuration**: You can change the port number used by BurpSuite if another service is already using the default port (8080). This flexibility ensures that BurpSuite runs without conflict, even in environments where multiple services are in use.
 
@@ -100,13 +100,13 @@ BurpSuite organizes its tools and features into different tabs, each designed to
 
 	The Proxy tab is where much of the hands-on, real-time testing occurs in BurpSuite. By combining interception, traffic inspection, and automation, it provides powerful control over the data exchanged between the client and the server.
 
-4. Scanner (Pro Edition Only)
+4. Scanner (Pro Edition Only)  
    The Scanner tab is available in BurpSuite Professional and is used to automate security scans for discovering vulnerabilities like SQL Injection, XSS, and other common web application security issues. You can initiate scans from the Target tab or Proxy tab.
 
-6. Intruder
+5. Intruder  
 	The Intruder tab in BurpSuite is designed for performing automated and semi-automated attacks against web applications. It is particularly useful for testing scenarios such as brute-force attacks, parameter fuzzing, and identifying vulnerable inputs.
 	
-	The Intruder tab is broken down into several key sections:
+	The Intruder tab is broken down into several key sections:  
 	
 	- **Target**: In this section, you specify the host and port that the Intruder will target. The request that you want to attack is defined here. Typically, you send a request from another tab (like Proxy or Repeater) to the Intruder for automated testing.
 	
@@ -127,22 +127,22 @@ BurpSuite organizes its tools and features into different tabs, each designed to
 	
 	- **Filters and In-Scope Items**: You can filter the results based on criteria such as response codes, length, or keywords. Additionally, BurpSuite allows you to restrict Intruder attacks to in-scope items only, ensuring that the automated tests stay within the authorized testing boundaries.
 
-7. Repeater
+6. Repeater  
    The Repeater tab is used for manual testing by sending the same request multiple times with different parameters or payloads. This tool is invaluable for exploring how the application responds to different inputs, often used in testing authentication, authorization, or input validation.
 
-8. Sequencer
+7. Sequencer  
    The Sequencer tab helps analyze the randomness and predictability of session tokens, CSRF tokens, and other important values generated by the web application. This analysis is crucial for understanding whether such tokens can be guessed or predicted by attackers.
-
-9. Decoder
+   
+8. Decoder  
    The Decoder tab allows you to encode or decode data in various formats, such as Base64, URL encoding, or hexadecimal. It’s useful for analyzing data that might be obfuscated or transformed by the application.
 
-10. Comparer
+9. Comparer  
    The Comparer tab lets you compare two pieces of data side-by-side, such as HTTP responses or encoded payloads. It highlights differences, making it easier to detect subtle changes that could indicate a vulnerability.
 
-11. Extender
+10. Extender  
    The Extender tab is where you can manage BurpSuite extensions, either by installing third-party extensions from the BApp Store or by loading custom-built ones. These extensions can significantly enhance BurpSuite’s capabilities.
 
-12. Project Options
+11. Project Options  
    The Project Options tab contains settings that apply specifically to the current project. You can configure scan settings, proxy behavior, authentication details, and much more based on the requirements of your specific engagement.
 
 Each of these tabs serves a distinct purpose in the overall security testing workflow, and understanding how they fit together will help you maximize BurpSuite’s effectiveness.
